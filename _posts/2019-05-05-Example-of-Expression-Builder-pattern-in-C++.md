@@ -1,11 +1,11 @@
 ---
 layout: post
-title:  "Expression Builder pattern [C++]"
+title:  "[C++] Expression Builder pattern"
 date:   2019-05-05
 categories: design_patterns c++ builder_pattern fluent_interface
 ---
 
-//image??
+Link to a repository: <https://github.com/czarny247/ExpressionBuilderExample>
 
 ## Introduction
 
@@ -33,7 +33,7 @@ public:
           HairColor maneColor, 
           HairColor tailColor);
 
-//[...]
+//<...>
     
 private:
 	std::string name_;
@@ -64,7 +64,7 @@ private:
 };
 
 //finally how does it works
-//[...]
+//<...>
 HorseBuilder horseBuilder;
 horseBuilder.name("Roach");
 horseBuilder.coatColor(horse::CoatColor::Brown);
@@ -77,7 +77,7 @@ Horse roach("Roach",
             horse::CoatColor::Brown,
            	horse::HairColor::Black,
            	horse::HairColor::Black);
-//[...]
+//<...>
 ```
 
 Without going in implementation details it looks like clearer alternative, especially for classes which uses c-tors with many arguments.
@@ -166,7 +166,7 @@ public:
 			HairColor maneColor, 
 			HairColor tailColor, 
 			HornColor hornColor);
-	//[...]
+	//<...>
 
 private:
 	HornColor hornColor_;
@@ -235,18 +235,6 @@ class Derived : public Base<Derived>
 In my example **CRTP** is used to allow *Polymorphic method chaining* which means that we will avoid *Object slicing* mentioned in the previous paragraph.
 
 This approach will change inheritance arrangement between Builders.
-
-**Before:**
-
-//read how to use files in jekyll webpages
-
-![before](C:\Users\Siili\Desktop\before.png)
-
-**After:**
-
-![after](C:\Users\Siili\Desktop\after.png)
-
-This is the simplest approach to apply CRTP to this example.
 
 **HorseBuilderBase** class will be an *abstract base class* which defines all common parts of "real" Builders (the ones which produce objects of specific classes - *Unicorns* and *Horses*).
 
@@ -320,7 +308,7 @@ private:
 And finally the client code:
 
 ```c++
-std::vector<std::shared_ptr<horse::Horse> > stables;
+std::vector<std::shared_ptr<horse::Horse>> stables;
 
 horse::HorseBuilder horseBuilder;
 
@@ -356,66 +344,39 @@ I've found some improvements for Builder while digging the web.
 
    Although its simplicity for non-inheritance case, it will be hard to implement it for the one including inheritance among product classes.
 
-   more: https://riptutorial.com/cplusplus/example/30166/builder-pattern-with-fluent-api
+   more: <https://riptutorial.com/cplusplus/example/30166/builder-pattern-with-fluent-api>
 
 2. **Add Director class.**
 
    Director class will manage the builders and choose proper one depending on client's needs.
 
-   more: https://refactoring.guru/design-patterns/builder
+   more: <https://refactoring.guru/design-patterns/builder>
 
-//later sections:
+## Summary 
 
-//summary - pros and cons
+//Add summary
 
-//links - more on...
+More on Expression Builder / Fluent interface / Method chaining:
 
-//link to github repo - when will be set up - make CMake based project
+<https://www.martinfowler.com/bliki/ExpressionBuilder.html>
+<https://www.martinfowler.com/dslCatalog/expressionBuilder.html>
+<https://en.wikipedia.org/wiki/Method_chaining>
 
-links:
+More on CRTP:
 
-https://www.martinfowler.com/bliki/ExpressionBuilder.html
+<https://stackoverflow.com/questions/52530440/boostpolycollection-stdvariant-or-crtp>
+<https://stackoverflow.com/questions/8113878/c-crtp-and-accessing-deriveds-nested-typedefs-from-base/8113956>
+<https://blog.galowicz.de/2016/02/26/how_to_use_crtp_to_reduce_duplication/>
+<http://www.modernescpp.com/index.php/c-is-still-lazy>
+<https://marcoarena.wordpress.com/2012/04/29/use-crtp-for-polymorphic-chaining/>
+<https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/>
 
-https://www.martinfowler.com/dslCatalog/expressionBuilder.html
+More on Builder Pattern:
 
-https://www.martinfowler.com/books/dsl.html
-
-https://stackoverflow.com/questions/52530440/boostpolycollection-stdvariant-or-crtp
-
-https://stackoverflow.com/questions/8113878/c-crtp-and-accessing-deriveds-nested-typedefs-from-base/8113956
-
-https://blog.galowicz.de/2016/02/26/how_to_use_crtp_to_reduce_duplication/
-
-http://www.modernescpp.com/index.php/c-is-still-lazy
-
-https://marcoarena.wordpress.com/2012/04/29/use-crtp-for-polymorphic-chaining/
-
-https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/
-
-https://medium.com/beingprofessional/think-functional-advanced-builder-pattern-using-lambda-284714b85ed5
-
-https://dzone.com/articles/design-patterns-the-builder-pattern
-
-https://stackoverflow.com/questions/17937755/what-is-the-difference-between-a-fluent-interface-and-the-builder-pattern
-
-https://medium.com/@sawomirkowalski/design-patterns-builder-fluent-interface-and-classic-builder-d16ad3e98f6c
-
-https://gist.github.com/pazdera/1121152
-
-https://en.wikipedia.org/wiki/Method_chaining
-
-https://stackoverflow.com/questions/8967521/class-template-with-template-class-friend-whats-really-going-on-here
-
-https://stackoverflow.com/questions/8147027/how-do-i-call-stdmake-shared-on-a-class-with-only-protected-or-private-const
-
-https://stackoverflow.com/questions/45127107/private-constructor-and-make-shared/45127266
-
-https://gist.github.com/RklAlx/6727537
-
-https://rienajouter.blogspot.com/2014/10/makeshared-and-makeunique-for-classes.html
-
-https://social.msdn.microsoft.com/Forums/sqlserver/en-US/828b8a8f-a27a-46b6-a1b6-2372270037c0/stdmakeshared-cannot-invoke-a-private-constructor-even-if-the-constructor-is-accessible-at?forum=vcgeneral
-
-https://softwareengineering.stackexchange.com/questions/278354/builder-design-patterns-passing-parameters-from-client-to-the-builder
-
-https://stackoverflow.com/questions/17554618/c-builder-pattern-with-inheritance
+<https://medium.com/beingprofessional/think-functional-advanced-builder-pattern-using-lambda-284714b85ed5>
+<https://dzone.com/articles/design-patterns-the-builder-pattern>
+<https://stackoverflow.com/questions/17937755/what-is-the-difference-between-a-fluent-interface-and-the-builder-pattern>
+<https://medium.com/@sawomirkowalski/design-patterns-builder-fluent-interface-and-classic-builder-d16ad3e98f6c>
+<https://gist.github.com/pazdera/1121152>
+<https://softwareengineering.stackexchange.com/questions/278354/builder-design-patterns-passing-parameters-from-client-to-the-builder>
+<https://stackoverflow.com/questions/17554618/c-builder-pattern-with-inheritance>
