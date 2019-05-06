@@ -33,7 +33,7 @@ public:
           HairColor maneColor, 
           HairColor tailColor);
 
-//<...>
+//[...]
     
 private:
 	std::string name_;
@@ -64,7 +64,7 @@ private:
 };
 
 //finally how does it works
-//<...>
+//[...]
 HorseBuilder horseBuilder;
 horseBuilder.name("Roach");
 horseBuilder.coatColor(horse::CoatColor::Brown);
@@ -77,7 +77,7 @@ Horse roach("Roach",
             horse::CoatColor::Brown,
            	horse::HairColor::Black,
            	horse::HairColor::Black);
-//<...>
+//[...]
 ```
 
 Without going in implementation details it looks like clearer alternative, especially for classes which uses c-tors with many arguments.
@@ -166,7 +166,7 @@ public:
 			HairColor maneColor, 
 			HairColor tailColor, 
 			HornColor hornColor);
-	//<...>
+	//[...]
 
 private:
 	HornColor hornColor_;
@@ -358,25 +358,38 @@ I've found some improvements for Builder while digging the web.
 
 More on Expression Builder / Fluent interface / Method chaining:
 
-<https://www.martinfowler.com/bliki/ExpressionBuilder.html>
-<https://www.martinfowler.com/dslCatalog/expressionBuilder.html>
-<https://en.wikipedia.org/wiki/Method_chaining>
+* <https://www.martinfowler.com/bliki/ExpressionBuilder.html>
+
+* <https://www.martinfowler.com/dslCatalog/expressionBuilder.html>
+
+* <https://en.wikipedia.org/wiki/Method_chaining>
 
 More on CRTP:
 
-<https://stackoverflow.com/questions/52530440/boostpolycollection-stdvariant-or-crtp>
-<https://stackoverflow.com/questions/8113878/c-crtp-and-accessing-deriveds-nested-typedefs-from-base/8113956>
-<https://blog.galowicz.de/2016/02/26/how_to_use_crtp_to_reduce_duplication/>
+* <https://stackoverflow.com/questions/52530440/boostpolycollection-stdvariant-or-crtp>
+
+* <https://stackoverflow.com/questions/8113878/c-crtp-and-accessing-deriveds-nested-typedefs-from-base/8113956>
+
+* <https://blog.galowicz.de/2016/02/26/how_to_use_crtp_to_reduce_duplication/>
+
 <http://www.modernescpp.com/index.php/c-is-still-lazy>
-<https://marcoarena.wordpress.com/2012/04/29/use-crtp-for-polymorphic-chaining/>
-<https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/>
+
+* <https://marcoarena.wordpress.com/2012/04/29/use-crtp-for-polymorphic-chaining/>
+
+* <https://www.fluentcpp.com/2017/05/12/curiously-recurring-template-pattern/>
 
 More on Builder Pattern:
 
-<https://medium.com/beingprofessional/think-functional-advanced-builder-pattern-using-lambda-284714b85ed5>
-<https://dzone.com/articles/design-patterns-the-builder-pattern>
-<https://stackoverflow.com/questions/17937755/what-is-the-difference-between-a-fluent-interface-and-the-builder-pattern>
-<https://medium.com/@sawomirkowalski/design-patterns-builder-fluent-interface-and-classic-builder-d16ad3e98f6c>
-<https://gist.github.com/pazdera/1121152>
-<https://softwareengineering.stackexchange.com/questions/278354/builder-design-patterns-passing-parameters-from-client-to-the-builder>
-<https://stackoverflow.com/questions/17554618/c-builder-pattern-with-inheritance>
+* <https://medium.com/beingprofessional/think-functional-advanced-builder-pattern-using-lambda-284714b85ed5>
+
+* <https://dzone.com/articles/design-patterns-the-builder-pattern>
+
+* <https://stackoverflow.com/questions/17937755/what-is-the-difference-between-a-fluent-interface-and-the-builder-pattern>
+
+* <https://medium.com/@sawomirkowalski/design-patterns-builder-fluent-interface-and-classic-builder-d16ad3e98f6c>
+
+* <https://gist.github.com/pazdera/1121152>
+
+* <https://softwareengineering.stackexchange.com/questions/278354/builder-design-patterns-passing-parameters-from-client-to-the-builder>
+
+* <https://stackoverflow.com/questions/17554618/c-builder-pattern-with-inheritance>
